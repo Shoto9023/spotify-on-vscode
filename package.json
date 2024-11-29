@@ -1,5 +1,5 @@
 {
-	"name": "calico-colors",
+	"name": "spotify-on-code",
 	"description": "Calico Colors - A Webview View API Sample",
 	"version": "0.0.1",
 	"publisher": "vscode-samples",
@@ -26,19 +26,19 @@
 			"explorer": [
 				{
 					"type": "webview",
-					"id": "calicoColors.colorsView",
-					"name": "Calico Colors"
+					"id": "test.sideview",
+					"name": "test view"
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "calicoColors.addColor",
+				"command": "vscspotify.Play",
 				"category": "Calico Colors",
 				"title": "Add Color"
 			},
 			{
-				"command": "calicoColors.clearColors",
+				"command": "vscspotify.changeImg",
 				"category": "Calico Colors",
 				"title": "Clear Colors",
 				"icon": "$(clear-all)"
@@ -47,7 +47,7 @@
 		"menus": {
 			"view/title": [
 				{
-					"command": "calicoColors.clearColors",
+					"command": "vscspotify.changeImg",
 					"group": "navigation",
 					"when": "view == calicoColors.colorsView"
 				}

@@ -38,3 +38,17 @@ body {
 	border: none;
 	margin: 0 auto;
 }
+
+.image_area {
+	display: block;
+	width: 100%;
+}
+
+.control_area {
+	display: block;
+	position: absolute;
+	top: 200px;
+	width: 100%;
+	align-content: space-between;
+	text-align: center;
+}
