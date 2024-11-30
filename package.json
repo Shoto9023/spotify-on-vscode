@@ -1,6 +1,6 @@
 {
 	"name": "spotify-on-code",
-	"description": "Calico Colors - A Webview View API Sample",
+	"description": "Control Spotify on your Sidebar!",
 	"version": "0.0.1",
 	"publisher": "vscode-samples",
 	"private": true,

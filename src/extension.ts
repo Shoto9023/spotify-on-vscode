@@ -34,6 +34,20 @@ class ImageProvider implements vscode.WebviewViewProvider {
 		};
 
 		panel.webview.html = this.getViewContent(panel.webview);
+
+		panel.webview.onDidReceiveMessage(async data => {
+			switch(data.type){
+				case 'play_pause':
+					vscode.window.showInformationMessage("Play/Pause Button");
+					break;
+				case 'prev':
+					vscode.window.showInformationMessage("Previous Button");
+					break;
+				case 'next':
+					vscode.window.showInformationMessage("Next Button");
+					break;
+			}
+		})
 	}
 
 	private getViewContent(webview: vscode.Webview) {
@@ -45,7 +59,10 @@ class ImageProvider implements vscode.WebviewViewProvider {
 		const styleVSCodeUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'vscode.css'));
 		const styleMainUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'main.css'));
 
-		const testImageUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'test.png'));
+		const coverImageUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'test.png'));
+		const imagePrevUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'prev.png'));
+		const imagePlayUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'play.png'));
+		const imageNextUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'next.png'));
 
 		// Use a nonce to only allow a specific script to be run.
 		const nonce = getNonce();
@@ -63,11 +80,24 @@ class ImageProvider implements vscode.WebviewViewProvider {
 				<link href="${styleMainUri}" rel="stylesheet">
 			</head>
 			<body>
-				<div class="image_area">
-					<img src="${testImageUri}" />
+				<div class="image_container">
+					<div class="image_area">
+						<img src="${coverImageUri}" />
+					</div>
+					<div class="button_group">
+						<button class="overlay_button" id="vscs_prev_button">
+							<img src="${imagePrevUri}" class="button_icon"/>
+						</button>
+						<button class="overlay_button" id="vscs_play_button">
+							<img src="${imagePlayUri}" class="button_icon"/>
+						</button>
+						<button class="overlay_button" id="vscs_next_button">
+							<img src="${imageNextUri}" class="button_icon"/>
+						</button>
+					</div>
 				</div>
-				<button>test</button>
 			</body>
+			<script nonce="${nonce}" src="${scriptUri}"></script>
 			</html>`;
 	}
 }

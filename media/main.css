@@ -1,54 +1,68 @@
 body {
 	background-color: transparent;
+	outline: none;
 }
 
-.color-list {
-	list-style: none;
-	padding: 0;
-}
-
-.color-entry {
-	width: 100%;
-	display: flex;
-	margin-bottom: 0.4em;
-	border: 1px solid var(--vscode-input-border);
-}
-
-.color-preview {
-	width: 2em;
-	height: 2em;
-}
-
-.color-preview:hover {
-	outline: inset white;
-}
-
-.color-input {
-	display: block;
-	flex: 1;
-	width: 100%;
-	color: var(--vscode-input-foreground);
-	background-color: var(--vscode-input-background);
-	border: none;
-	padding: 0 0.6em;
-}
-
-.add-color-button {
-	display: block;
-	border: none;
-	margin: 0 auto;
+.image_container {
+    position: relative;
+    width: fit-content;
 }
 
 .image_area {
-	display: block;
-	width: 100%;
+    display: block;
 }
 
-.control_area {
-	display: block;
-	position: absolute;
-	top: 200px;
-	width: 100%;
-	align-content: space-between;
-	text-align: center;
+.image_area img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.button_group {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+	transform: translateY(10px);
+    transition: opacity 0.1s ease, transform 0.1s ease;
+	outline: none;
+}
+
+.image_container:hover .button_group {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.overlay_button {
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--vscode-button-background);
+    border: 1px solid #ccc;
+    border-radius: 100%;
+    cursor: pointer;
+    overflow: hidden;
+	outline: none;
+}
+
+.button_icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+	outline: none;
+}
+
+.overlay_button:hover {
+    background-color: #1ed760;
+	transform: translateY(-2px);
 }
